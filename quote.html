@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Get a Quote | Instant Bathroom Prices</title>
+  <style>
+    /* Dark theme with clean design */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: #121212;
+      color: #ffffff;
+      line-height: 1.6;
+    }
+    
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+    
+    header {
+      background-color: rgba(0,0,0,0.7);
+      padding: 1rem 0;
+      position: fixed;
+      width: 100%;
+      z-index: 100;
+    }
+    
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #ffffff;
+      text-decoration: none;
+    }
+    
+    nav ul {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    
+    nav li {
+      margin-left: 2rem;
+    }
+    
+    nav a {
+      color: #ffffff;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    
+    nav a:hover {
+      color: #9370db;
+    }
+    
+    section {
+      padding: 5rem 0;
+      padding-top: 100px;
+    }
+    
+    .card {
+      background-color: #1e1e1e;
+      border-radius: 8px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    h2 {
+      margin-bottom: 2rem;
+      text-align: center;
+      position: relative;
+      padding-bottom: 1rem;
+    }
+    
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 3px;
+      background: linear-gradient(to right, #6a5acd, #9370db);
+    }
+    
+    h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      padding-bottom: 0.5rem;
+    }
+    
+    form {
+      display: grid;
+      gap: 1.5rem;
+    }
+    
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    
+    @media (max-width: 768px) {
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+    }
+    
+    .required {
+      color: #f56565;
+    }
+    
+    input, select, textarea {
+      width: 100%;
+      padding: 0.8rem;
+      border: 1px solid #333;
+      border-radius: 4px;
+      background-color: #252525;
+      color: #ffffff;
+      font-size: 1rem;
+    }
+    
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: #6a5acd;
+    }
+    
+    .radio-group, .checkbox-group {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+    
+    @media (max-width: 768px) {
+      .radio-group, .checkbox-group {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .radio-option, .checkbox-option {
+      display: flex;
+      align-items: flex-start;
+      padding: 0.5rem;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+    
+    .radio-option:hover, .checkbox-option:hover {
+      background-color: rgba(255,255,255,0.05);
+    }
+    
+    .radio-option input, .checkbox-option input {
+      width: auto;
+      margin-right: 0.75rem;
+      margin-top: 0.25rem;
+    }
+    
+    .other-input {
+      margin-top: 0.5rem;
+      display: none;
+    }
+    
+    .consent-group {
+      background-color: rgba(0,0,0,0.2);
+      padding: 1rem;
+      border-radius: 4px;
+      margin-top: 1rem;
+    }
+    
+    button {
+      background: linear-gradient(to right, #6a5acd, #9370db);
+      color: white;
+      border: none;
+      padding: 0.8rem 2rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: transform 0.3s;
+      margin-top: 1rem;
+    }
+    
+    button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    
+    .result {
+      background-color: #1e1e1e;
+      padding: 2rem;
+      border-radius: 8px;
+      margin-top: 2rem;
+      display: none;
+      text-align: center;
+    }
+    
+    .result-title {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    
+    footer {
+      background-color: #0a0a0a;
+      padding: 2rem 0;
+      text-align: center;
+    }
+    
+    @media (max-width: 768px) {
+      nav ul {
+        display: none;
+      }
+    }
+    
+    .terms-link, .privacy-link {
+      color: #9370db;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container header-content">
+      <a href="index.html" class="logo">Instant Bathroom Prices</a>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="quote.html">Get Quote</a></li>
+          <li><a href="calculator.html">Calculator</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-content">
+    <div class="container">
+      <h2>Get Your Instant Bathroom Quote</h2>
+      <div class="card">
+        <form id="quote-form" action="https://formsubmit.co/leads@americanremodeling.net" method="POST">
+          <!-- FormSubmit configuration -->
+          <input type="hidden" name="_captcha" value="true">
+          <input type="hidden" name="_subject" value="New Bathroom Quote Request">
+          <input type="hidden" name="_next" value="thank-you.html">
+          <input type="hidden" name="_template" value="table">
+          
+          <h3>Contact Information</h3>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="first-name">First Name <span class="required">*</span></label>
+              <input type="text" id="first-name" name="first_name" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="last-name">Last Name <span class="required">*</span></label>
+              <input type="text" id="last-name" name="last_name" required>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="email">Email Address <span class="required">*</span></label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="phone">Phone Number <span class="required">*</span></label>
+            <input type="tel" id="phone" name="phone" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="address">Property Address <span class="required">*</span></label>
+            <input type="text" id="address" name="address" required>
+          </div>
+          
+          <h3>Project Information</h3>
+          
+          <div class="form-group">
+            <label>What type of bathroom project are you considering? <span class="required">*</span></label>
+            <div class="radio-group">
+              <label class="radio-option">
+                <input type="radio" name="project_type" value="Full bathroom remodel" required>
+                Full bathroom remodel
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="project_type" value="Tub replacement">
+                Tub replacement
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="project_type" value="Shower replacement">
+                Shower replacement
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="project_type" value="Tub to shower conversion">
+                Tub to shower conversion
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="project_type" value="Shower to tub conversion">
+                Shower to tub conversion
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="project_type" value="Other" id="project-other-radio">
+                Other
+              </label>
+            </div>
+            <div class="other-input" id="project-other-input">
+              <label for="project-other">Please specify:</label>
+              <input type="text" id="project-other" name="project_other">
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label>What is the approximate size of your bathroom? <span class="required">*</span></label>
+            <div class="radio-group">
+              <label class="radio-option">
+                <input type="radio" name="bathroom_size" value="Small (under 40 sq ft)" required>
+                Small (under 40 sq ft)
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="bathroom_size" value="Medium (40-80 sq ft)">
+                Medium (40-80 sq ft)
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="bathroom_size" value="Large (80-120 sq ft)">
+                Large (80-120 sq ft)
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="bathroom_size" value="Very large (over 120 sq ft)">
+                Very large (over 120 sq ft)
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="bathroom_size" value="I'm not sure">
+                I'm not sure
+              </label>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label>Is your current bathroom damaged or in need of repair? <span class="required">*</span></label>
+            <div class="radio-group">
+              <label class="radio-option">
+                <input type="radio" name="bathroom_condition" value="Yes, it needs repair" required>
+                Yes, it needs repair
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="bathroom_condition" value="No, it's in good condition">
+                No, it's in good condition
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="bathroom_condition" value="I'm not sure">
+                I'm not sure
+              </label>
+            </div>
+          </div>
+          
+          <h3>Design & Timeline</h3>
+          
+          <div class="form-group">
+            <label>What fixtures are you interested in for your bathroom?</label>
+            <div class="checkbox-group">
+              <label class="checkbox-option">
+                <input type="checkbox" name="fixtures[]" value="Freestanding tub">
+                Freestanding tub
+              </label>
+              <label class="checkbox-option">
+                <input type="checkbox" name="fixtures[]" value="Built-in tub">
+                Built-in tub
+              </label>
+              <label class="checkbox-option">
+                <input type="checkbox" name="fixtures[]" value="Walk-in shower">
+                Walk-in shower
+              </label>
+              <label class="checkbox-option">
+                <input type="checkbox" name="fixtures[]" value="Glass shower enclosure">
+                Glass shower enclosure
+              </label>
+              <label class="checkbox-option">
+                <input type="checkbox" name="fixtures[]" value="Shower/tub combo">
+                Shower/tub combo
+              </label>
+              <label class="checkbox-option">
+                <input type="checkbox" name="fixtures[]" value="Other" id="fixtures-other-checkbox">
+                Other
+              </label>
+            </div>
+            <div class="other-input" id="fixtures-other-input">
+              <label for="fixtures-other">Please specify:</label>
+              <input type="text" id="fixtures-other" name="fixtures_other">
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label>When would you like the bathroom remodel to be completed? <span class="required">*</span></label>
+            <div class="radio-group">
+              <label class="radio-option">
+                <input type="radio" name="timeline" value="As soon as possible" required>
+                As soon as possible
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="timeline" value="Within the next month">
+                Within the next month
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="timeline" value="Within the next 3 months">
+                Within the next 3 months
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="timeline" value="Within the next 6 months">
+                Within the next 6 months
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="timeline" value="No specific timeline">
+                No specific timeline
+              </label>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label>What is your approximate budget for this bathroom remodel?</label>
+            <div class="radio-group">
+              <label class="radio-option">
+                <input type="radio" name="budget" value="Less than $5,000">
+                Less than $5,000
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="budget" value="$5,000 - $10,000">
+                $5,000 - $10,000
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="budget" value="$10,000 - $20,000">
+                $10,000 - $20,000
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="budget" value="$20,000 - $30,000">
+                $20,000 - $30,000
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="budget" value="More than $30,000">
+                More than $30,000
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="budget" value="Prefer not to say">
+                Prefer not to say
+              </label>
+            </div>
+          </div>
+          
+          <h3>Additional Information</h3>
+          
+          <div class="form-group">
+            <label>Have you received any quotes for this project yet?</label>
+            <div class="radio-group">
+              <label class="radio-option">
+                <input type="radio" name="previous_quotes" value="Yes, from one contractor">
+                Yes, from one contractor
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="previous_quotes" value="Yes, from multiple contractors">
+                Yes, from multiple contractors
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="previous_quotes" value="No, not yet">
+                No, not yet
+              </label>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label>What materials are you interested in for your bathroom?</label>
+            <div class="checkbox-group">
+              <label class="checkbox-option">
+                <input type="checkbox" name="materials[]" value="Ceramic tile">
+                Ceramic tile
+              </label>
+              <label class="checkbox-option">
+                <input type="checkbox" name="materials[]" value="Porcelain tile">
+                Porcelain tile
+              </label>
+              <label class="checkbox-option">
+                <input type="checkbox" name="materials[]" value="Natural stone">
+                Natural stone
+              </label>
+              <label class="checkbox-option">
+                <input type="checkbox" name="materials[]" value="Glass tile">
+                Glass tile
+              </label>
+              <label class="checkbox-option">
+                <input type="checkbox" name="materials[]" value="Not sure yet">
+                Not sure yet
+              </label>
+              <label class="checkbox-option">
+                <input type="checkbox" name="materials[]" value="Other" id="materials-other-checkbox">
+                Other
+              </label>
+            </div>
+            <div class="other-input" id="materials-other-input">
+              <label for="materials-other">Please specify:</label>
+              <input type="text" id="materials-other" name="materials_other">
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label>Do you have any specific concerns or requirements for your bathroom remodel?</label>
+            <div class="checkbox-group">
+              <label class="checkbox-option">
+                <input type="checkbox" name="concerns[]" value="Accessibility features">
+                Accessibility features
+              </label>
+              <label class="checkbox-option">
+                <input type="checkbox" name="concerns[]" value="Water efficiency">
+                Water efficiency
+              </label>
+              <label class="checkbox-option">
+                <input type="checkbox" name="concerns[]" value="Mold resistance">
+                Mold resistance
+              </label>
+              <label class="checkbox-option">
+                <input type="checkbox" name="concerns[]" value="Heated floors">
+                Heated floors
+              </label>
+              <label class="checkbox-option">
+                <input type="checkbox" name="concerns[]" value="None">
+                None
+              </label>
+              <label class="checkbox-option">
+                <input type="checkbox" name="concerns[]" value="Other" id="concerns-other-checkbox">
+                Other
+              </label>
+            </div>
+            <div class="other-input" id="concerns-other-input">
+              <label for="concerns-other">Please specify:</label>
+              <input type="text" id="concerns-other" name="concerns_other">
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="additional-comments">Additional Comments or Questions</label>
+            <textarea id="additional-comments" name="additional_comments" rows="4"></textarea>
+          </div>
+          
+          <div class="form-group consent-group">
+            <label class="checkbox-option">
+              <input type="checkbox" name="terms_consent" required>
+              I agree to the <a href="#" class="terms-link">Terms of Service</a> and <a href="#" class="privacy-link">Privacy Policy</a> by submitting this form. <span class="required">*</span>
+            </label>
+          </div>
+          
+          <div class="form-group consent-group">
+            <label class="checkbox-option">
+              <input type="checkbox" name="sms_consent">
+              I consent to receive SMS messages about my bathroom project. Standard message and data rates may apply.
+            </label>
+          </div>
+          
+          <button type="submit">Submit Quote Request</button>
+        </form>
+        
+        <div id="quote-result" class="result">
+          <h3 class="result-title">Thank You!</h3>
+          <p>We've received your quote request and will contact you shortly with a detailed estimate.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2023 Instant Bathroom Prices. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Handle "Other" options
+      const projectOtherRadio = document.getElementById('project-other-radio');
+      const projectOtherInput = document.getElementById('project-other-input');
+      
+      if (projectOtherRadio && projectOtherInput) {
+        projectOtherRadio.addEventListener('change', function() {
+          projectOtherInput.style.display = this.checked ? 'block' : 'none';
+        });
+      }
+      
+      // Handle other "Other" checkboxes
+      const fixturesOtherCheckbox = document.getElementById('fixtures-other-checkbox');
+      const fixturesOtherInput = document.getElementById('fixtures-other-input');
+      
+      if (fixturesOtherCheckbox && fixturesOtherInput) {
+        fixturesOtherCheckbox.addEventListener('change', function() {
+          fixturesOtherInput.style.display = this.checked ? 'block' : 'none';
+        });
+      }
+      
+      const materialsOtherCheckbox = document.getElementById('materials-other-checkbox');
+      const materialsOtherInput = document.getElementById('materials-other-input');
+      
+      if (materialsOtherCheckbox && materialsOtherInput) {
+        materialsOtherCheckbox.addEventListener('change', function() {
+          materialsOtherInput.style.display = this.checked ? 'block' : 'none';
+        });
+      }
+      
+      const concernsOtherCheckbox = document.getElementById('concerns-other-checkbox');
+      const concernsOtherInput = document.getElementById('concerns-other-input');
+      
+      if (concernsOtherCheckbox && concernsOtherInput) {
+        concernsOtherCheckbox.addEventListener('change', function() {
+          concernsOtherInput.style.display = this.checked ? 'block' : 'none';
+        });
+      }
+      
+      // Form submission
+      const quoteForm = document.getElementById('quote-form');
+      const quoteResult = document.getElementById('quote-result');
+      
+      if (quoteForm) {
+        quoteForm.addEventListener('submit', function(e) {
+          // Let FormSubmit handle the actual form submission
+          // This is just for visual feedback if JavaScript is enabled
+          // The form will still work without JavaScript
+        });
+      }
+    });
+  </script>
+</body>
+</html>
+

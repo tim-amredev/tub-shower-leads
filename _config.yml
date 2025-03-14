@@ -1,0 +1,32 @@
+# Site settings
+title: Instant Bathroom Prices
+email: info@instantbathroomprices.com
+description: >-
+  Get instant pricing estimates for your tub and shower remodel project. Professional bathroom installation services with transparent pricing and exceptional quality.
+baseurl: "/bathroom-leads" # the subpath of your site, e.g. /blog
+url: "https://tim-amredev.github.io" # the base hostname & protocol for your site
+twitter_username: instantbathroom
+github_username: instantbathroom
+
+# Build settings
+markdown: kramdown
+theme: minima
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .sass-cache
+  - .jekyll-cache
+  - gemfiles
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+

@@ -1,8 +1,8 @@
 # Site settings
-title: Instant Bathroom Prices
+title: Instant Bathroom Prices | Professional Tub & Shower Remodeling
 email: info@instantbathroomprices.com
 description: >-
-  Get instant pricing estimates for your tub and shower remodel project. Professional bathroom installation services with transparent pricing and exceptional quality.
+  Get instant pricing estimates for your tub and shower remodel project. Professional bathroom installation services with transparent pricing and exceptional quality. Serving homeowners nationwide with premium bathroom renovations.
 baseurl: "/bathroom-leads" # the subpath of your site, e.g. /blog
 url: "https://tim-amredev.github.io" # the base hostname & protocol for your site
 twitter_username: instantbathroom
@@ -15,6 +15,16 @@ plugins:
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-sitemap
+
+# SEO settings
+lang: en_US
+author: Instant Bathroom Prices
+social:
+  name: Instant Bathroom Prices
+  links:
+    - https://twitter.com/instantbathroom
+    - https://www.facebook.com/instantbathroomprices
+    - https://www.linkedin.com/company/instantbathroomprices
 
 # Exclude from processing
 exclude:

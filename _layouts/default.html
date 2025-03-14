@@ -1,31 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
-  <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
-  <!-- Direct link to CSS file -->
-  <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/styles.css">
-  <link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}">
-  {% seo %}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
+<meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+<!-- Security headers -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' https://v0.blob.com https://*.vercel-storage.com data:; connect-src 'self';">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+<!-- Canonical URL -->
+<link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}">
+<!-- Direct link to CSS file -->
+<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/styles.css">
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="{{ site.baseurl }}/assets/images/favicon.png">
+{% seo %}
 </head>
 <body class="bg-dark-blue text-gray-100">
-  <div class="site-container">
-    {% include header.html %}
-    
-    <main class="main-content">
-      {{ content }}
-    </main>
-    
-    {% include footer.html %}
-  </div>
+<div class="site-container">
+  {% include header.html %}
   
-  <!-- Direct link to JavaScript file -->
-  <script src="{{ site.baseurl }}/assets/js/main.js"></script>
-  {% if page.js %}
-    <script src="{{ site.baseurl }}/assets/js/{{ page.js }}.js"></script>
-  {% endif %}
+  <main class="main-content">
+    {{ content }}
+  </main>
+  
+  {% include footer.html %}
+</div>
+
+<!-- Direct link to JavaScript file -->
+<script src="{{ site.baseurl }}/assets/js/main.js"></script>
+{% if page.js %}
+  <script src="{{ site.baseurl }}/assets/js/{{ page.js }}.js"></script>
+{% endif %}
+
+<!-- Structured data for local business -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HomeAndConstructionBusiness",
+  "name": "Instant Bathroom Prices",
+  "image": "{{ site.url }}{{ site.baseurl }}/assets/images/logo.png",
+  "url": "{{ site.url }}{{ site.baseurl }}/",
+  "telephone": "+1-800-123-4567",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "123 Main Street",
+    "addressLocality": "Anytown",
+    "addressRegion": "CA",
+    "postalCode": "12345",
+    "addressCountry": "US"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 37.7749,
+    "longitude": -122.4194
+  },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "opens": "08:00",
+    "closes": "18:00"
+  },
+  "sameAs": [
+    "https://www.facebook.com/instantbathroomprices",
+    "https://twitter.com/instantbathroom",
+    "https://www.linkedin.com/company/instantbathroomprices"
+  ],
+  "priceRange": "$$"
+}
+</script>
 </body>
 </html>
 

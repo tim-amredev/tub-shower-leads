@@ -1,12 +1,12 @@
 # Site settings
-title: Instant Bathroom Prices | Professional Tub & Shower Remodeling
-email: info@instantbathroomprices.com
+title: Instant Tub Price | Professional Tub & Shower Remodeling
+email: info@instanttubprice.com
 description: >-
   Get instant pricing estimates for your tub and shower remodel project. Professional bathroom installation services with transparent pricing and exceptional quality. Serving homeowners nationwide with premium bathroom renovations.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "instanttubprice.com" # the base hostname & protocol for your site
-twitter_username: instantbathroom
-github_username: instantbathroom
+url: "https://instanttubprice.com/" # the base hostname & protocol for your site
+twitter_username: instanttubprice
+github_username: instanttubprice
 
 # Build settings
 markdown: kramdown
@@ -18,13 +18,13 @@ plugins:
 
 # SEO settings
 lang: en_US
-author: Instant Bathroom Prices
+author: Instant Tub Price
 social:
-  name: Instant Bathroom Prices
+  name: Instant Tub Price
   links:
-    - https://twitter.com/instantbathroom
-    - https://www.facebook.com/instantbathroomprices
-    - https://www.linkedin.com/company/instantbathroomprices
+    - https://twitter.com/instanttubprice
+    - https://www.facebook.com/instanttubprice
+    - https://www.linkedin.com/company/instanttubprice
 
 # Exclude from processing
 exclude:
@@ -39,4 +39,3 @@ exclude:
   - vendor/cache/
   - vendor/gems/
   - vendor/ruby/
-

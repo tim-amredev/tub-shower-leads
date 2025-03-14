@@ -1,6 +1,27 @@
 <footer>
   <div class="container">
-    <p>&copy; {{ site.time | date: '%Y' }} Instant Tub Price. All rights reserved.</p>
+    <div class="footer-content">
+      <div class="footer-info">
+        <h3>Instant Tub Price</h3>
+        <p>Professional bathroom remodeling services nationwide</p>
+        <p>Phone: <a href="tel:+18001234567">800-123-4567</a></p>
+        <p>Email: <a href="mailto:info@instanttubprice.com">info@instanttubprice.com</a></p>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="{{ '/' | relative_url }}">Home</a></li>
+          <li><a href="{{ '/quote.html' | relative_url }}">Get Quote</a></li>
+          <li><a href="{{ '/calculator.html' | relative_url }}">Calculator</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; {{ site.time | date: '%Y' }} Instant Tub Price. All rights reserved.</p>
+      <p>Secure site - All information is encrypted and protected</p>
+    </div>
   </div>
 </footer>
 

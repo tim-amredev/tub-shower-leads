@@ -1,4 +1,27 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // Header scroll effect
+  const header = document.querySelector("header")
+  if (header) {
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 50) {
+        header.classList.add("scrolled")
+      } else {
+        header.classList.remove("scrolled")
+      }
+    })
+  }
+
+  // Mobile menu toggle
+  const mobileMenuToggle = document.querySelector(".mobile-menu-toggle")
+  const navList = document.querySelector("nav ul")
+
+  if (mobileMenuToggle && navList) {
+    mobileMenuToggle.addEventListener("click", () => {
+      mobileMenuToggle.classList.toggle("active")
+      navList.classList.toggle("active")
+    })
+  }
+
   // Quote form submission
   const quoteForm = document.getElementById("quote-form")
   const quoteResult = document.getElementById("quote-result")
@@ -74,9 +97,39 @@ document.addEventListener("DOMContentLoaded", () => {
       const minPrice = Math.round(bathroomSize * pricePerSqFt.min)
       const maxPrice = Math.round(bathroomSize * pricePerSqFt.max)
 
-      // Update result
-      priceRange.textContent = "$" + minPrice.toLocaleString() + " - $" + maxPrice.toLocaleString()
-      calculatorResult.style.display = "block"
+      // Update result with animation
+      calculatorResult.style.opacity = 0
+
+      setTimeout(() => {
+        priceRange.textContent = "$" + minPrice.toLocaleString() + " - $" + maxPrice.toLocaleString()
+        calculatorResult.style.display = "block"
+
+        setTimeout(() => {
+          calculatorResult.style.opacity = 1
+        }, 50)
+      }, 300)
+
+      // Smooth scroll to results
+      setTimeout(() => {
+        calculatorResult.scrollIntoView({ behavior: "smooth", block: "start" })
+      }, 350)
+    })
+  }
+
+  // Form field animations
+  const formInputs = document.querySelectorAll("input, select, textarea")
+
+  if (formInputs.length > 0) {
+    formInputs.forEach((input) => {
+      // Add focus class to parent when input is focused
+      input.addEventListener("focus", () => {
+        input.parentElement.classList.add("focused")
+      })
+
+      // Remove focus class when input loses focus
+      input.addEventListener("blur", () => {
+        input.parentElement.classList.remove("focused")
+      })
     })
   }
 })

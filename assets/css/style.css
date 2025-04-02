@@ -46,7 +46,12 @@ body {
 }
 
 /* Typography */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: 700;
   line-height: 1.2;
   margin-bottom: 1rem;
@@ -67,7 +72,7 @@ h2 {
 }
 
 h2::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 50%;
@@ -119,6 +124,7 @@ header.scrolled {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0 1rem;
 }
 
 .logo {
@@ -128,6 +134,8 @@ header.scrolled {
   text-decoration: none;
   position: relative;
   padding: 0.5rem 0;
+  display: flex;
+  align-items: center;
 }
 
 .logo::after {
@@ -145,15 +153,21 @@ header.scrolled {
   width: 100%;
 }
 
+nav {
+  display: flex;
+  align-items: center;
+}
+
 nav ul {
   display: flex;
   list-style: none;
   margin: 0;
   padding: 0;
+  gap: 2rem;
 }
 
 nav li {
-  margin-left: 2rem;
+  margin: 0;
 }
 
 nav a {
@@ -162,6 +176,7 @@ nav a {
   transition: color var(--transition-fast);
   position: relative;
   padding: 0.5rem 0;
+  font-weight: 500;
 }
 
 nav a::after {
@@ -183,10 +198,27 @@ nav a:hover::after {
   width: 100%;
 }
 
+.mobile-menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.toggle-bar {
+  display: block;
+  width: 25px;
+  height: 2px;
+  margin: 6px 0;
+  background-color: var(--text);
+  transition: all 0.3s ease;
+}
+
 /* Hero Section */
 .hero {
   height: 100vh;
-  background-image: url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Best-Bathroom-Remodel-Contractors-Hero-696x399-lPYDsl9EKjHrVYfK10S9aqgRNV33Cd.webp');
+  background-image: url("https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Best-Bathroom-Remodel-Contractors-Hero-696x399-lPYDsl9EKjHrVYfK10S9aqgRNV33Cd.webp");
   background-size: cover;
   background-position: center;
   display: flex;
@@ -195,7 +227,7 @@ nav a:hover::after {
 }
 
 .hero::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -212,8 +244,14 @@ nav a:hover::after {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 h1 {
@@ -248,7 +286,7 @@ h1 {
 }
 
 .btn::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: -100%;
@@ -300,7 +338,7 @@ section {
 }
 
 .card h3::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;
@@ -337,7 +375,9 @@ label {
   margin-left: 0.25rem;
 }
 
-input, select, textarea {
+input,
+select,
+textarea {
   width: 100%;
   padding: 0.9rem 1rem;
   border: 1px solid var(--border);
@@ -348,20 +388,24 @@ input, select, textarea {
   transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
-input:focus, select:focus, textarea:focus {
+input:focus,
+select:focus,
+textarea:focus {
   outline: none;
   border-color: var(--accent);
   box-shadow: 0 0 0 2px rgba(138, 112, 219, 0.2);
 }
 
-.radio-group, .checkbox-group {
+.radio-group,
+.checkbox-group {
   display: grid;
   grid-template-columns: 1fr;
   gap: 0.75rem;
   margin-top: 0.75rem;
 }
 
-.radio-option, .checkbox-option {
+.radio-option,
+.checkbox-option {
   display: flex;
   align-items: flex-start;
   padding: 0.75rem;
@@ -370,11 +414,13 @@ input:focus, select:focus, textarea:focus {
   transition: background-color var(--transition-fast);
 }
 
-.radio-option:hover, .checkbox-option:hover {
+.radio-option:hover,
+.checkbox-option:hover {
   background-color: rgba(255, 255, 255, 0.05);
 }
 
-.radio-option input, .checkbox-option input {
+.radio-option input,
+.checkbox-option input {
   width: auto;
   margin-right: 0.75rem;
   margin-top: 0.25rem;
@@ -411,7 +457,7 @@ button {
 }
 
 button::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: -100%;
@@ -464,7 +510,7 @@ footer {
 }
 
 footer::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -494,7 +540,7 @@ footer::before {
 }
 
 .footer-info h3::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;
@@ -516,7 +562,7 @@ footer::before {
 }
 
 .footer-links h4::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;
@@ -561,55 +607,45 @@ footer::before {
 
 /* Responsive styles */
 @media (max-width: 768px) {
+  .header-content {
+    padding: 0 1rem;
+  }
+  
+  nav {
+    position: relative;
+  }
+  
   nav ul {
     display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100vw;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.95);
+    padding: 1rem 0;
+    gap: 0;
+    box-shadow: var(--shadow-md);
+    z-index: 100;
   }
   
-  h1 {
-    font-size: 2.25rem;
+  nav ul.active {
+    display: flex;
   }
   
-  h2 {
-    font-size: 1.75rem;
-  }
-  
-  .hero {
+  nav li {
+    width: 100%;
     text-align: center;
   }
   
-  .hero-content {
-    margin: 0 auto;
+  nav a {
+    display: block;
+    padding: 1rem 0;
   }
   
-  .form-row {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-  
-  section {
-    padding: 4rem 0;
-  }
-  
-  .card {
-    padding: 1.75rem;
-  }
-  
-  /* Mobile menu toggle */
   .mobile-menu-toggle {
     display: block;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0.5rem;
-  }
-  
-  .toggle-bar {
-    display: block;
-    width: 25px;
-    height: 2px;
-    margin: 6px 0;
-    background-color: var(--text);
-    transition: all 0.3s ease;
+    z-index: 101;
   }
   
   .mobile-menu-toggle.active .toggle-bar:nth-child(1) {
@@ -623,9 +659,42 @@ footer::before {
   .mobile-menu-toggle.active .toggle-bar:nth-child(3) {
     transform: rotate(-45deg) translate(5px, -6px);
   }
-  
+
+  h1 {
+    font-size: 2.25rem;
+  }
+
+  h2 {
+    font-size: 1.75rem;
+  }
+
+  .hero {
+    text-align: center;
+  }
+
+  .hero-content {
+    margin: 0 auto;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  section {
+    padding: 4rem 0;
+  }
+
+  .card {
+    padding: 1.75rem;
+  }
+
   /* Improve touch targets */
-  input, select, button, .radio-option, .checkbox-option {
+  input,
+  select,
+  button,
+  .radio-option,
+  .checkbox-option {
     min-height: 44px;
   }
 }
@@ -636,25 +705,25 @@ footer::before {
     width: 95%;
     padding: 0 10px;
   }
-  
+
   h1 {
     font-size: 2rem;
   }
-  
+
   h2 {
     font-size: 1.5rem;
   }
-  
+
   .logo {
     font-size: 1.3rem;
   }
-  
+
   .btn {
     padding: 0.8rem 1.5rem;
     width: 100%;
     text-align: center;
   }
-  
+
   .card {
     padding: 1.5rem;
   }
@@ -686,12 +755,14 @@ footer::before {
 }
 
 /* Terms links */
-.terms-link, .privacy-link {
+.terms-link,
+.privacy-link {
   color: var(--accent);
   text-decoration: underline;
   transition: color var(--transition-fast);
 }
 
-.terms-link:hover, .privacy-link:hover {
+.terms-link:hover,
+.privacy-link:hover {
   color: var(--accent-light);
 }

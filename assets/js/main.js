@@ -214,4 +214,49 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     })
   }
+
+  // Handle conditional fields for shelves
+  const shelvesYes = document.getElementById("shelves-yes")
+  const shelvesNo = document.getElementById("shelves-no")
+  const shelvesQuantityContainer = document.getElementById("shelves-quantity-container")
+
+  if (shelvesYes && shelvesNo && shelvesQuantityContainer) {
+    shelvesYes.addEventListener("change", function () {
+      if (this.checked) {
+        shelvesQuantityContainer.style.display = "block"
+      }
+    })
+
+    shelvesNo.addEventListener("change", function () {
+      if (this.checked) {
+        shelvesQuantityContainer.style.display = "none"
+      }
+    })
+  }
+
+  // Handle other conditional fields and form interactions
+  const projectOtherRadio = document.getElementById("project-other-radio")
+  const projectOtherInput = document.getElementById("project-other-input")
+  const fixturesOtherCheckbox = document.getElementById("fixtures-other-checkbox")
+  const fixturesOtherInput = document.getElementById("fixtures-other-input")
+
+  if (projectOtherRadio && projectOtherInput) {
+    projectOtherRadio.addEventListener("change", function () {
+      if (this.checked) {
+        projectOtherInput.style.display = "block"
+      } else {
+        projectOtherInput.style.display = "none"
+      }
+    })
+  }
+
+  if (fixturesOtherCheckbox && fixturesOtherInput) {
+    fixturesOtherCheckbox.addEventListener("change", function () {
+      if (this.checked) {
+        fixturesOtherInput.style.display = "block"
+      } else {
+        fixturesOtherInput.style.display = "none"
+      }
+    })
+  }
 })

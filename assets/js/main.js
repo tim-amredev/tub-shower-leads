@@ -176,4 +176,42 @@ document.addEventListener("DOMContentLoaded", () => {
       })
     })
   }
+
+  // Handle conditional fields for insurance related question
+  const insuranceYes = document.getElementById("insurance-yes")
+  const insuranceNo = document.getElementById("insurance-no")
+  const softSpotsContainer = document.getElementById("soft-spots-container")
+
+  if (insuranceYes && insuranceNo && softSpotsContainer) {
+    insuranceYes.addEventListener("change", function () {
+      if (this.checked) {
+        softSpotsContainer.style.display = "block"
+      }
+    })
+
+    insuranceNo.addEventListener("change", function () {
+      if (this.checked) {
+        softSpotsContainer.style.display = "none"
+      }
+    })
+  }
+
+  // Handle conditional fields for grab bars
+  const grabBarsYes = document.getElementById("grab-bars-yes")
+  const grabBarsNo = document.getElementById("grab-bars-no")
+  const grabBarsQuantityContainer = document.getElementById("grab-bars-quantity-container")
+
+  if (grabBarsYes && grabBarsNo && grabBarsQuantityContainer) {
+    grabBarsYes.addEventListener("change", function () {
+      if (this.checked) {
+        grabBarsQuantityContainer.style.display = "block"
+      }
+    })
+
+    grabBarsNo.addEventListener("change", function () {
+      if (this.checked) {
+        grabBarsQuantityContainer.style.display = "none"
+      }
+    })
+  }
 })

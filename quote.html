@@ -125,7 +125,57 @@
               </label>
             </div>
           </div>
-          
+
+          <div class="form-group">
+            <label>Existing Material/Scope of Removal <span class="required">*</span></label>
+            <select id="existing-material" name="existing_material" required>
+              <option value="">Select Material Type</option>
+              <option value="Tile">Tile</option>
+              <option value="Fiberglass">Fiberglass</option>
+              <option value="Acrylic">Acrylic</option>
+              <option value="Cultured Marble">Cultured Marble</option>
+              <option value="Natural Stone">Natural Stone</option>
+              <option value="Solid Surface">Solid Surface</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Is this project insurance related?</label>
+            <div class="radio-group">
+              <label class="radio-option">
+                <input type="radio" name="insurance_related" value="Yes" id="insurance-yes">
+                Yes
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="insurance_related" value="No" id="insurance-no" checked>
+                No
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group" id="soft-spots-container" style="display: none;">
+            <label>Are there soft spots in the floor or walls?</label>
+            <div class="radio-group">
+              <label class="radio-option">
+                <input type="radio" name="soft_spots" value="Yes">
+                Yes
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="soft_spots" value="No">
+                No
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="soft_spots" value="Not sure">
+                Not sure
+              </label>
+            </div>
+            <div class="form-group">
+              <label for="insurance-notes">Additional Insurance Notes</label>
+              <textarea id="insurance-notes" name="insurance_notes" rows="2"></textarea>
+            </div>
+          </div>
+
           <h3>Design & Timeline</h3>
           
           <div class="form-group">
@@ -217,7 +267,74 @@
               </label>
             </div>
           </div>
-          
+
+          <div class="form-group">
+            <label>Preferred payment method</label>
+            <div class="radio-group">
+              <label class="radio-option">
+                <input type="radio" name="payment_preference" value="Cash">
+                Cash/Check/Credit Card
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="payment_preference" value="Finance">
+                Financing
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="payment_preference" value="Undecided">
+                Undecided
+              </label>
+            </div>
+          </div>
+
+          <h3>Accessibility Features</h3>
+
+          <div class="form-group">
+            <label>Shower Entry Type</label>
+            <div class="radio-group">
+              <label class="radio-option">
+                <input type="radio" name="shower_entry" value="Walk-in">
+                Walk-in (No step/Low threshold)
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="shower_entry" value="Seat needed">
+                Seat needed
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="shower_entry" value="Both">
+                Both walk-in and seat
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="shower_entry" value="Standard">
+                Standard (No special accessibility needed)
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Do you need grab bar shelves?</label>
+            <div class="radio-group">
+              <label class="radio-option">
+                <input type="radio" name="grab_bars_needed" value="Yes" id="grab-bars-yes">
+                Yes
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="grab_bars_needed" value="No" id="grab-bars-no" checked>
+                No
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group" id="grab-bars-quantity-container" style="display: none;">
+            <label for="grab-bars-quantity">How many grab bar shelves?</label>
+            <select id="grab-bars-quantity" name="grab_bars_quantity">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </div>
+
           <h3>Additional Information</h3>
           
           <div class="form-group">
@@ -378,4 +495,3 @@
   <script src="assets/js/main.js"></script>
 </body>
 </html>
-

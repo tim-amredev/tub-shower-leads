@@ -311,7 +311,22 @@
           </div>
 
           <div class="form-group">
-            <label>Do you need grab bar shelves?</label>
+            <label>Walk-in Tub Needed</label>
+            <div class="radio-group">
+              <label class="radio-option">
+                <input type="radio" name="walkin_tub_needed" value="Yes">
+                Yes
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="walkin_tub_needed" value="No" checked>
+                No
+              </label>
+            </div>
+            <p class="helper-text">Walk-in tubs feature a door for easy entry and exit without stepping over a high tub wall</p>
+          </div>
+
+          <div class="form-group">
+            <label>Grab Bars Needed</label>
             <div class="radio-group">
               <label class="radio-option">
                 <input type="radio" name="grab_bars_needed" value="Yes" id="grab-bars-yes">
@@ -322,11 +337,38 @@
                 No
               </label>
             </div>
+            <p class="helper-text">Safety bars to assist with balance and stability</p>
           </div>
 
           <div class="form-group" id="grab-bars-quantity-container" style="display: none;">
-            <label for="grab-bars-quantity">How many grab bar shelves?</label>
+            <label for="grab-bars-quantity">How many grab bars?</label>
             <select id="grab-bars-quantity" name="grab_bars_quantity">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Shelves Needed</label>
+            <div class="radio-group">
+              <label class="radio-option">
+                <input type="radio" name="shelves_needed" value="Yes" id="shelves-yes">
+                Yes
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="shelves_needed" value="No" id="shelves-no" checked>
+                No
+              </label>
+            </div>
+            <p class="helper-text">Built-in shelves for storage of bath products</p>
+          </div>
+
+          <div class="form-group" id="shelves-quantity-container" style="display: none;">
+            <label for="shelves-quantity">How many shelves?</label>
+            <select id="shelves-quantity" name="shelves_quantity">
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>

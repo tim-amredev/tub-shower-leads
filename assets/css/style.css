@@ -139,7 +139,7 @@ header.scrolled {
 }
 
 .logo::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;
@@ -180,7 +180,7 @@ nav a {
 }
 
 nav a::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;
@@ -217,13 +217,11 @@ nav a:hover::after {
 
 /* Hero Section */
 .hero {
+  position: relative;
   height: 100vh;
-  background-image: url("https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Best-Bathroom-Remodel-Contractors-Hero-696x399-lPYDsl9EKjHrVYfK10S9aqgRNV33Cd.webp");
-  background-size: cover;
-  background-position: center;
   display: flex;
   align-items: center;
-  position: relative;
+  background-image: none; /* Remove the background image as we're using the carousel */
 }
 
 .hero::before {
@@ -238,7 +236,7 @@ nav a:hover::after {
 
 .hero-content {
   position: relative;
-  z-index: 1;
+  z-index: 4;
   max-width: 600px;
   animation: fadeIn 1s ease-out;
 }
@@ -303,6 +301,77 @@ h1 {
 
 .btn:hover::before {
   left: 100%;
+}
+
+/* Carousel Styles */
+.carousel-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.carousel {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.carousel-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+  z-index: 1;
+}
+
+.carousel-slide.active {
+  opacity: 1;
+  z-index: 2;
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4));
+  z-index: 3;
+}
+
+.carousel-indicators {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 5;
+}
+
+.indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.indicator.active {
+  background-color: var(--accent);
 }
 
 /* Sections */
@@ -610,11 +679,11 @@ footer::before {
   .header-content {
     padding: 0 1rem;
   }
-  
+
   nav {
     position: relative;
   }
-  
+
   nav ul {
     display: none;
     position: absolute;
@@ -628,34 +697,34 @@ footer::before {
     box-shadow: var(--shadow-md);
     z-index: 100;
   }
-  
+
   nav ul.active {
     display: flex;
   }
-  
+
   nav li {
     width: 100%;
     text-align: center;
   }
-  
+
   nav a {
     display: block;
     padding: 1rem 0;
   }
-  
+
   .mobile-menu-toggle {
     display: block;
     z-index: 101;
   }
-  
+
   .mobile-menu-toggle.active .toggle-bar:nth-child(1) {
     transform: rotate(45deg) translate(5px, 6px);
   }
-  
+
   .mobile-menu-toggle.active .toggle-bar:nth-child(2) {
     opacity: 0;
   }
-  
+
   .mobile-menu-toggle.active .toggle-bar:nth-child(3) {
     transform: rotate(-45deg) translate(5px, -6px);
   }

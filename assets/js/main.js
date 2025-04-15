@@ -1,4 +1,48 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // Carousel functionality
+  const carousel = document.querySelector(".carousel")
+  if (carousel) {
+    const slides = document.querySelectorAll(".carousel-slide")
+    const indicators = document.querySelectorAll(".indicator")
+    let currentSlide = 0
+    let slideInterval = setInterval(nextSlide, 5000) // Change slide every 5 seconds
+
+    // Function to change slide
+    function changeSlide(n) {
+      slides[currentSlide].classList.remove("active")
+      indicators[currentSlide].classList.remove("active")
+
+      currentSlide = (n + slides.length) % slides.length
+
+      slides[currentSlide].classList.add("active")
+      indicators[currentSlide].classList.add("active")
+    }
+
+    // Function for next slide
+    function nextSlide() {
+      changeSlide(currentSlide + 1)
+    }
+
+    // Add click event to indicators
+    indicators.forEach((indicator, index) => {
+      indicator.addEventListener("click", () => {
+        clearInterval(slideInterval) // Reset timer when manually changing
+        changeSlide(index)
+        slideInterval = setInterval(nextSlide, 5000) // Restart timer
+      })
+    })
+
+    // Pause carousel on hover
+    carousel.addEventListener("mouseenter", () => {
+      clearInterval(slideInterval)
+    })
+
+    // Resume carousel on mouse leave
+    carousel.addEventListener("mouseleave", () => {
+      slideInterval = setInterval(nextSlide, 5000)
+    })
+  }
+
   // Header scroll effect
   const header = document.querySelector("header")
   if (header) {
@@ -133,4 +177,3 @@ document.addEventListener("DOMContentLoaded", () => {
     })
   }
 })
-
